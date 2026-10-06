@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capital Continuum Survey — For Founders &amp; Entrepreneurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ink: #1E2622;
+    --sub: #5B5748;
+    --muted: #6B6656;
+    --faint: #8A8371;
+    --paper: #F4F1EA;
+    --card: #FFFFFF;
+    --line: #D9D2C2;
+    --accent: #2B6E64;
+    --accent-soft: #F4F9F8;
+    --cta: #C1622D;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Work Sans', sans-serif; background: var(--paper); color: var(--ink); }
+  h1, h2 { font-family: 'Fraunces', serif; margin: 0; }
+  a { color: var(--accent); }
+  button { font-family: 'Work Sans', sans-serif; cursor: pointer; }
+  fieldset { border: none; padding: 0; margin: 0; }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid var(--line); background: var(--card); }
+  .nav-left { display: flex; align-items: baseline; gap: 12px; }
+  .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; }
+  .divider { width: 1px; height: 16px; background: #C9C1AE; display: inline-block; }
+  .nav-sub { font-size: 14px; color: var(--sub); }
+  .nav-time { font-size: 13px; color: var(--sub); }
+  .hero { padding: 48px 24px 32px 24px; }
+  .badge { display: inline-block; padding: 6px 14px; border: 1px solid var(--accent); border-radius: 100px; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+  .hero h1 { font-size: 34px; line-height: 1.18; margin-bottom: 14px; }
+  .hero p { font-size: 16px; line-height: 1.6; color: #3E4640; max-width: 700px; margin: 0; }
+  .section { padding: 0 24px 24px 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px 28px; }
+  .card h2 { font-size: 21px; margin-bottom: 6px; }
+  .card > p.lead { font-size: 14px; color: var(--muted); margin: 0 0 20px 0; }
+  label.field-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .field, select, input[type=text], input[type=email], textarea {
+    display: block; width: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--line);
+    border-radius: 10px; font-size: 15px; font-family: inherit; background: var(--card); color: var(--ink);
+  }
+  textarea { resize: vertical; }
+  .row-2 { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .row-2 > * { flex: 1; min-width: 220px; }
+
+  /* grid */
+  .grid-note { font-size: 11px; color: var(--faint); line-height: 1.4; margin-top: 4px; }
+  .grid-head, .grid-row { display: grid; grid-template-columns: 1.4fr 2fr 1.3fr 1.3fr; align-items: center; column-gap: 16px; padding: 14px 0; border-bottom: 1px solid #E4DFD1; }
+  .grid-head { border-bottom: 2px solid var(--ink); align-items: flex-start; }
+  .grid-head span.h { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--sub); display: block; }
+  .cap-name { font-size: 14px; font-weight: 600; }
+  .cap-desc { font-size: 12px; color: var(--sub); }
+  .scale { display: flex; gap: 6px; }
+  .opt { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 30px; }
+  .opt input { width: 15px; height: 15px; accent-color: var(--accent); margin: 0; }
+  .opt span { font-size: 10px; color: var(--muted); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .pill { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 100px; }
+  .pill input { width: 15px; height: 15px; accent-color: var(--accent); margin: 0; }
+  .pill-group { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .footer { padding: 32px 24px 64px 24px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); flex-wrap: wrap; gap: 16px; }
+  .submit-btn { padding: 14px 32px; background: var(--cta); color: #fff; border: none; border-radius: 100px; font-size: 15px; font-weight: 600; }
+  .submit-btn:disabled { opacity: 0.6; cursor: default; }
+  .footer-note { font-size: 13px; color: var(--muted); }
+
+  .thankyou { display: none; padding: 48px 24px; text-align: center; }
+  .thankyou h1 { font-size: 28px; margin-bottom: 12px; }
+  .thankyou p { color: var(--muted); font-size: 15px; }
+
+  @media (max-width: 640px) {
+    .grid-head, .grid-row { grid-template-columns: 1fr; row-gap: 8px; }
+    .grid-head span.h:nth-child(2) { display: none; }
+    .scale { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div id="form-view" class="wrap">
+  <div class="nav">
+    <div class="nav-left">
+      <span class="brand">Start Garden</span>
+      <span class="divider"></span>
+      <span class="nav-sub">Capital Continuum Project</span>
+    </div>
+    <span class="nav-time">Takes about 9 minutes</span>
+  </div>
+
+  <div class="hero">
+    <div class="badge">For Founders &amp; Entrepreneurs</div>
+    <h1>Help us map capital access across West Michigan</h1>
+    <p>Your answers shape a public resource we're calling <em>The Playbook</em> — a plan to close gaps in how
+      capital reaches entrepreneurs here, especially founders of color. Skip anything you don't have a direct
+      opinion on.</p>
+  </div>
+
+  <form id="survey-form">
+
+    <!-- Demand baseline -->
+    <div class="section">
+      <div class="card">
+        <label class="field-label" for="unmetType">In the past 12 months, has your business needed a type of capital you couldn't find locally?</label>
+        <p class="lead">This is the single most useful answer you can give us — it's how we'll know if the Playbook is working.</p>
+        <div class="row-2">
+          <select id="unmetType" name="unmetType">
+            <option value="">No — I found what I needed</option>
+            <option>Grants</option>
+            <option>Friends &amp; Family</option>
+            <option>CDFIs</option>
+            <option>Angels</option>
+            <option>SEAL / Revenue-Based Financing</option>
+            <option>SPV</option>
+            <option>Venture Capital</option>
+            <option>PRI / Impact Investment</option>
+            <option>Other / not sure</option>
+          </select>
+          <input type="text" id="unmetAmount" name="unmetAmount" placeholder="Roughly how much were you seeking?">
+        </div>
+        <textarea id="unmetStory" name="unmetStory" rows="3" placeholder="What happened when you looked for it?"></textarea>
+      </div>
+    </div>
+
+    <!-- Capital grid -->
+    <div class="section">
+      <div class="card">
+        <h2>Rate each capital type</h2>
+        <p class="lead">Rate each independently — a capital type can be widely available locally but still hard for you to access, or the reverse. Leave a row blank if you don't have a direct opinion on it.</p>
+
+        <div class="grid-head">
+          <span class="h">Capital type</span>
+          <span class="h">What it is</span>
+          <div><span class="h">Accessibility</span><span class="grid-note">Can you qualify and get approved? 1 = steep barriers · 5 = open</span></div>
+          <div><span class="h">Availability locally</span><span class="grid-note">How much exists in West Michigan? 1 = scarce · 5 = deep supply</span></div>
+        </div>
+
+        <div id="grid-body"></div>
+      </div>
+    </div>
+
+    <!-- Demographics -->
+    <div class="section">
+      <div class="card">
+        <h2>How do you identify? <span style="font-weight:400; font-size:14px; color:var(--muted);">(optional)</span></h2>
+        <p class="lead">This lets us show where capital gaps are sharpest for specific communities. Always reported in aggregate, never by name.</p>
+
+        <fieldset style="margin-bottom: 20px;">
+          <legend style="font-size:14px; font-weight:600; margin-bottom:10px;">Race or ethnicity (select all that apply)</legend>
+          <div class="pill-group" id="race-group">
+            <label class="pill"><input type="checkbox" name="race" value="Black or African American"><span>Black or African American</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="Hispanic or Latino/a"><span>Hispanic or Latino/a</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="Asian"><span>Asian</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="Native American or Alaska Native"><span>Native American or Alaska Native</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="Native Hawaiian or Pacific Islander"><span>Native Hawaiian or Pacific Islander</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="Middle Eastern or North African"><span>Middle Eastern or North African</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="White"><span>White</span></label>
+            <label class="pill"><input type="checkbox" name="race" value="Prefer not to say"><span>Prefer not to say</span></label>
+          </div>
+          <label class="field-label" style="margin-top:12px; font-weight:400; font-size:13px; color:var(--muted);" for="raceOther">Prefer to self-describe:</label>
+          <input type="text" id="raceOther" name="raceOther" style="max-width:400px;">
+        </fieldset>
+
+        <fieldset>
+          <legend style="font-size:14px; font-weight:600; margin-bottom:10px;">Gender</legend>
+          <div class="pill-group">
+            <label class="pill"><input type="radio" name="gender" value="Woman"><span>Woman</span></label>
+            <label class="pill"><input type="radio" name="gender" value="Man"><span>Man</span></label>
+            <label class="pill"><input type="radio" name="gender" value="Non-binary"><span>Non-binary</span></label>
+            <label class="pill"><input type="radio" name="gender" value="Prefer not to say"><span>Prefer not to say</span></label>
+          </div>
+          <label class="field-label" style="margin-top:12px; font-weight:400; font-size:13px; color:var(--muted);" for="genderOther">Prefer to self-describe:</label>
+          <input type="text" id="genderOther" name="genderOther" style="max-width:400px;">
+        </fieldset>
+      </div>
+    </div>
+
+    <!-- Forum opt-in -->
+    <div class="section">
+      <div class="card">
+        <h2>Want to help shape the Playbook directly?</h2>
+        <p class="lead">We're hosting community forums this year to test what we're learning against real experience.</p>
+        <label class="pill" style="max-width: 340px; margin-bottom: 16px;">
+          <input type="checkbox" id="forumOptIn" name="forumOptIn" value="Yes, invite me to a community forum">
+          <span>Yes, invite me to a community forum</span>
+        </label>
+        <input type="email" id="email" name="email" placeholder="Email address" style="max-width:400px;">
+      </div>
+    </div>
+
+    <!-- Optional note -->
+    <div class="section">
+      <div class="card">
+        <label class="field-label" for="note">Anything else about capital access in West Michigan we should know? (optional)</label>
+        <textarea id="note" name="note" rows="3" placeholder="Optional context, a story, or a correction to how we've described a capital type above."></textarea>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-note">Questions about this survey? <a href="mailto:hello@startgarden.com">hello@startgarden.com</a></span>
+      <button type="submit" class="submit-btn" id="submit-btn">Submit responses</button>
+    </div>
+  </form>
+</div>
+
+<div id="thankyou-view" class="thankyou wrap">
+  <h1>Thank you</h1>
+  <p>Your response helps shape the Playbook. Questions? <a href="mailto:hello@startgarden.com">hello@startgarden.com</a></p>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUbY36xyiCccM0xdoYxa8cbd7PIGA8GmE09xzabGkfv_ANKcDdg7UiIg3xC2QqpHIR/exec";
+
+const ROWS = [
+  { key: "grants", label: "Grants", desc: "Awards, no repayment expected" },
+  { key: "ff", label: "Friends & Family", desc: "Personal support, informal terms" },
+  { key: "cdfi", label: "CDFIs", desc: "Loans for those who don't qualify for traditional bank financing" },
+  { key: "angel", label: "Angels", desc: "Early equity investment from individuals" },
+  { key: "contracts", label: "Contracts", desc: "Payment for goods or services delivered" },
+  { key: "sealrbf", label: "SEAL / Revenue-Based Financing", desc: "Repaid as a share of profits or revenue, not a fixed schedule — loan, equity, or hybrid" },
+  { key: "spv", label: "SPV", desc: "Pooled investment vehicle for a single deal" },
+  { key: "vc", label: "Venture Capital", desc: "Equity for high-growth, high-return businesses" },
+  { key: "pri", label: "PRI / Impact Investment", desc: "Mission-driven capital from foundations, below-market terms" },
+];
+
+function renderGrid() {
+  const body = document.getElementById("grid-body");
+  const frag = document.createDocumentFragment();
+  ROWS.forEach(row => {
+    const el = document.createElement("div");
+    el.className = "grid-row";
+    el.innerHTML = `
+      <span class="cap-name">${row.label}</span>
+      <span class="cap-desc">${row.desc}</span>
+      <fieldset class="scale"><legend class="sr-only">Accessibility of ${row.label}</legend>
+        ${[1,2,3,4,5].map(n => `<label class="opt"><input type="radio" name="acc_${row.key}" value="${n}"><span>${n}</span></label>`).join("")}
+      </fieldset>
+      <fieldset class="scale"><legend class="sr-only">Availability of ${row.label}</legend>
+        ${[1,2,3,4,5].map(n => `<label class="opt"><input type="radio" name="avail_${row.key}" value="${n}"><span>${n}</span></label>`).join("")}
+      </fieldset>`;
+    frag.appendChild(el);
+  });
+  body.appendChild(frag);
+}
+renderGrid();
+
+const form = document.getElementById("survey-form");
+const submitBtn = document.getElementById("submit-btn");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  if (APPS_SCRIPT_URL.includes("PASTE_YOUR")) {
+    alert("One last setup step: paste your deployed Google Apps Script Web App URL into APPS_SCRIPT_URL near the bottom of this HTML file.");
+    return;
+  }
+
+  const fd = new FormData(form);
+  const data = { surveyType: "entrepreneur" };
+  const singleFields = ['unmetType','unmetAmount','unmetStory','raceOther','gender','genderOther','forumOptIn','email','note'];
+  singleFields.forEach(key => data[key] = fd.get(key) || "");
+  const multiFields = ['race'];
+  multiFields.forEach(key => data[key] = fd.getAll(key).join(" | "));
+  ROWS.forEach(row => {
+    data["acc_" + row.key] = fd.get("acc_" + row.key) || "";
+    data["avail_" + row.key] = fd.get("avail_" + row.key) || "";
+  });
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting…";
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data)
+    });
+    document.getElementById("form-view").style.display = "none";
+    document.getElementById("thankyou-view").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit responses";
+    alert("Something went wrong submitting your response. Please try again, or email hello@startgarden.com.");
+  }
+});
+</script>
+</body>
+</html>
