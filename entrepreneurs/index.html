@@ -202,6 +202,20 @@
       </div>
     </div>
 
+    <!-- Respondent information -->
+    <div class="section">
+      <div class="card">
+        <h2>About you</h2>
+        <p class="lead">Please tell us who is completing this survey.</p>
+        <div class="row-2">
+          <div><label class="field-label" for="firstName">First Name</label><input type="text" id="firstName" name="firstName"></div>
+          <div><label class="field-label" for="lastName">Last Name</label><input type="text" id="lastName" name="lastName"></div>
+        </div>
+        <label class="field-label" for="organization">Organization</label>
+        <input type="text" id="organization" name="organization">
+      </div>
+    </div>
+
     <!-- Forum opt-in -->
     <div class="section">
       <div class="card">
@@ -283,7 +297,7 @@ form.addEventListener("submit", async function(e) {
 
   const fd = new FormData(form);
   const data = { surveyType: "entrepreneur" };
-  const singleFields = ['unmetType','unmetAmount','unmetStory','livingExpenses','profitabilityObstacle','supportPackage','raceOther','gender','genderOther','forumOptIn','email','note'];
+  const singleFields = ['firstName','lastName','organization','unmetType','unmetAmount','unmetStory','livingExpenses','profitabilityObstacle','supportPackage','raceOther','gender','genderOther','forumOptIn','email','note'];
   singleFields.forEach(key => data[key] = fd.get(key) || "");
   const multiFields = ['race'];
   multiFields.forEach(key => data[key] = fd.getAll(key).join(" | "));
